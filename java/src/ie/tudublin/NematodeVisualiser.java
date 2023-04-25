@@ -9,17 +9,18 @@ import processing.data.TableRow;
 
 public class NematodeVisualiser extends PApplet
 {
-	ArrayList<Nematode> nematodes;
+	private ArrayList<Nematode> nematodes;
+	private int index;
 
 	public void keyPressed()
 	{
-		switch (key) {
+		switch (keyCode) {
 			case LEFT: {
-
+				index = (--index + nematodes.size()) % nematodes.size();
 				break;
 			}
 			case RIGHT: {
-
+				index = (++index + nematodes.size()) % nematodes.size();
 				break;
 			}
 			default: {
@@ -58,5 +59,17 @@ public class NematodeVisualiser extends PApplet
 
 	public void draw()
 	{
+		background(0);
+		text(index, 10, 10);
+		handleNematodes();
+	}
+
+	private void handleNematodes() {
+		Iterator<Nematode> itrNematode = nematodes.iterator();
+		while (itrNematode.hasNext()) {
+			Nematode nematode = itrNematode.next();
+			nematode.render(this);
+			nematode.update(index);
+		}
 	}
 }
