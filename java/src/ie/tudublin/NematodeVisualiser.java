@@ -51,8 +51,9 @@ public class NematodeVisualiser extends PApplet
 	public void loadNematodes()
 	{
 		Table table = loadTable("nematodes.csv", "header");
+		int id = 0;
 		for (TableRow tr : table.rows()) {
-			nematodes.add(new Nematode(tr));
+			nematodes.add(new Nematode(id++, this, tr));
 		}
 	}
 
@@ -68,8 +69,8 @@ public class NematodeVisualiser extends PApplet
 		Iterator<Nematode> itrNematode = nematodes.iterator();
 		while (itrNematode.hasNext()) {
 			Nematode nematode = itrNematode.next();
-			nematode.render(this);
-			nematode.update(index);
+			nematode.render();
+			nematode.update(index, nematodes.size());
 		}
 	}
 }
