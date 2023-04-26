@@ -8,6 +8,7 @@ import processing.core.PShapeSVG.Text;
 import processing.data.TableRow;
 
 public class Nematode {
+    boolean isVisible;
     PApplet p;
     String name;
     int length;
@@ -87,6 +88,8 @@ public class Nematode {
     }
 
     public void render() {
+        if (!isVisible) return;
+
         // p.noFill();
         p.pushMatrix();
         p.translate(pos.x, pos.y - SEGMENT_SIZE / 2 * length);
@@ -143,6 +146,7 @@ public class Nematode {
         pos.y = p.height / 2;
         // 0 in middle, left is 13, right is 1, halfway point i wrap
         int position = (index + id) % population - population / 2;
+        isVisible = position >= -2 && position <= 2;
         targetPos.x = p.width / 2 + position * p.width / 2;
 
         pos.x = PApplet.lerp(pos.x, targetPos.x, SPEED_COEF);
