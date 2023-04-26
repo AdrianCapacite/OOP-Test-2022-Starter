@@ -1,10 +1,7 @@
 package ie.tudublin;
 
-import javax.swing.text.Segment;
-
 import processing.core.PApplet;
 import processing.core.PVector;
-import processing.core.PShapeSVG.Text;
 import processing.data.TableRow;
 
 public class Nematode {
@@ -99,7 +96,8 @@ public class Nematode {
         p.textAlign(PApplet.CENTER, PApplet.CENTER);
         p.text(name, 0, -NAME_HEIGHT);
 
-        p.stroke(255);
+        float hue = PApplet.map(p.noise(id), 0, 1, 0, 255 * 2) % 255;
+        p.stroke(hue, 255, 255);
         p.fill(0);
         p.strokeWeight(SEGMENT_SIZE / 10);
 
