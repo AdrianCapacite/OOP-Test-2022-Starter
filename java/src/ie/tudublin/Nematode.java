@@ -19,7 +19,7 @@ public class Nematode {
     private final int SEGMENT_SIZE = 50;
     private int SEGMENT_SIZE2_3 = SEGMENT_SIZE * 2 / 3;
     private final float SPEED_COEF = 0.2f;
-    private final int FONT_SIZE = 100;
+    private final int FONT_SIZE = 50;
     private final int NAME_HEIGHT = 100 + SEGMENT_SIZE;
     private int id;
 

@@ -16,11 +16,11 @@ public class NematodeVisualiser extends PApplet
 	{
 		switch (keyCode) {
 			case LEFT: {
-				index = (--index + nematodes.size()) % nematodes.size();
+				index = (++index + nematodes.size()) % nematodes.size();
 				break;
 			}
 			case RIGHT: {
-				index = (++index + nematodes.size()) % nematodes.size();
+				index = (--index + nematodes.size()) % nematodes.size();
 				break;
 			}
 			default: {
